@@ -35,8 +35,8 @@
   nil
   '(("^[^ ].*$" . 'font-lock-comment-face)
     ("^ [^ ].*$" . 'font-lock-comment-face)
-    ("^  \$ .*$" . 'font-lock-constant-face)
-    ("^  > .*$" . 'font-lock-constant-face)
+    ("^  \$ " . 'font-lock-builtin-face)
+    ("^  > " . 'font-lock-builtin-face)
     ("(\\(re\\|glob\\|no-eol\\|esc\\))$" . 'font-lock-keyword-face))
   '("\\.t\\'")
   nil
