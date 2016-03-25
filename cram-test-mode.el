@@ -29,17 +29,29 @@
 ;; files. Cram framework can be found at:
 ;; <http://github.com/myint/cram>
 
-;;;###autoload 
-(define-generic-mode 'cram-test-mode
-  nil
-  nil
-  '(("^[^ ].*$" . 'font-lock-comment-face)
-    ("^ [^ ].*$" . 'font-lock-comment-face)
-    ("^  \$ " . 'font-lock-builtin-face)
-    ("^  > " . 'font-lock-builtin-face)
-    ("(\\(re\\|glob\\|no-eol\\|esc\\))$" . 'font-lock-keyword-face))
-  '("\\.t\\'")
-  nil
-  "Major mode for Cram tests highlighting.")
+(defvar cram-test-ouput-keywords
+  '("(re)" "(glob)" "(no-eol)" "(esc)"))
+
+(defvar cram-test-font-lock-defaults
+  `((("^  \\(\\$\\) +\\(\"[^\"]+\"\\|[^ ]+\\) +\\(.*\\)$"
+      (1 font-lock-builtin-face) ;; The $ sign
+      (2 font-lock-function-name-face) ;; The command
+      (3 font-lock-constant-face)) ;; The parameters
+     ("^  \\(>\\) +\\(.*\\)$"
+      (1 font-lock-builtin-face) ;; The > sign
+      (2 font-lock-constant-face)) ;; The parameters
+     ("^ ?[^ ].*$" . 'font-lock-comment-face)
+     (,(regexp-opt cram-test-ouput-keywords) . 'font-lock-keyword-face))))
+
+;;;###autoload
+(define-derived-mode cram-test-mode fundamental-mode "Cram test"
+  "Major mode for Cram tests highlighting."
+  (setq font-lock-defaults cram-test-font-lock-defaults)
+  (setq font-lock-string-face nil)
+  (set (make-local-variable 'tab-width) 2)
+)
 
 (provide 'cram-test-mode)
+
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.t\\'" . cram-test-mode))
