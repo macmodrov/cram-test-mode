@@ -47,7 +47,7 @@
 (define-derived-mode cram-test-mode fundamental-mode "Cram test"
   "Major mode for Cram tests highlighting."
   (setq font-lock-defaults cram-test-font-lock-defaults)
-  (setq-local font-lock-string-face nil)
+  (set (make-local-variable 'font-lock-string-face) nil)
   (set (make-local-variable 'tab-width) 2)
 )
 
