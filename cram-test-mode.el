@@ -41,7 +41,7 @@
       (1 font-lock-builtin-face) ;; The > sign
       (2 font-lock-constant-face)) ;; The parameters
      ("^ ?[^ ].*$" . 'font-lock-comment-face)
-     (,(regexp-opt cram-test-ouput-keywords) . 'font-lock-keyword-face))))
+     (,(concat (regexp-opt cram-test-ouput-keywords) "$") . 'font-lock-keyword-face))))
 
 ;;;###autoload
 (define-derived-mode cram-test-mode fundamental-mode "Cram test"
