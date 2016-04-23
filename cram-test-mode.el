@@ -40,7 +40,7 @@
      ("^  \\(>\\) +\\(.*\\)$"
       (1 font-lock-builtin-face) ;; The > sign
       (2 font-lock-constant-face)) ;; The parameters
-     ("^ ?[^ ].*$" . 'font-lock-comment-face)
+     ("^ ?[^ \n].*$" . 'font-lock-comment-face)
      (,(concat (regexp-opt cram-test-ouput-keywords) "$") . 'font-lock-keyword-face))))
 
 ;;;###autoload
