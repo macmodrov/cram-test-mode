@@ -33,7 +33,10 @@
   '("(re)" "(glob)" "(no-eol)" "(esc)"))
 
 (defvar cram-test-font-lock-defaults
-  `((("^  \\(\\$\\) +\\(\"[^\"]+\"\\|[^ \n]+\\)\\( +\\(.*?\\)\\)??$"
+  `((("^  \\(\\$\\) +\\(\"[^\"]+\"\\|[^ \n]+\\)$"
+      (1 font-lock-builtin-face) ;; The $ sign
+      (2 font-lock-function-name-face)) ;; The command
+     ("^  \\(\\$\\) +\\(\"[^\"]+\"\\|[^ \n]+\\)\\( +\\(\"[^\"]+\"\\|[^ \n]+\\)\\)+$"
       (1 font-lock-builtin-face) ;; The $ sign
       (2 font-lock-function-name-face) ;; The command
       (4 font-lock-constant-face)) ;; The parameters
