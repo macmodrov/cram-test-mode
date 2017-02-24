@@ -36,13 +36,13 @@
   `((("^  \\(\\$\\) +\\(\"[^\"]+\"\\|[^ \n]+\\)$"
       (1 font-lock-builtin-face) ;; The $ sign
       (2 font-lock-function-name-face)) ;; The command
-     ("^  \\(\\$\\) +\\(\"[^\"]+\"\\|[^ \n]+\\)\\( +\\(\"[^\"]+\"\\|[^ \n]+\\)\\)+$"
+     ("^  \\(\\$\\) +\\(\"[^\"]+\"\\|[^ \n]+\\) +\\(.*\\)$"
       (1 font-lock-builtin-face) ;; The $ sign
       (2 font-lock-function-name-face) ;; The command
-      (4 font-lock-constant-face)) ;; The parameters
+      (3 font-lock-function-name-face)) ;; The parameters
      ("^  \\(>\\) +\\(.*\\)$"
       (1 font-lock-builtin-face) ;; The > sign
-      (2 font-lock-constant-face)) ;; The parameters
+      (2 font-lock-function-name-face)) ;; The parameters
      ("^ ?[^ \n].*$" . 'font-lock-comment-face)
      (,(concat (regexp-opt cram-test-ouput-keywords) "$") . 'font-lock-keyword-face))))
 
